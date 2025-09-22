@@ -66,7 +66,7 @@ def build_prompt(cv_text: str, mode: str, additional: str = "") -> str:
         "ATS": "Analisa CV ini seperti sistem ATS (Applicant Tracking System). Fokus pada struktur, keyword, dan kelayakan lolos screening awal.",
         "HR": "Analisa CV ini dari sudut pandang HR. Soroti kekuatan, area perbaikan, dan rekomendasi agar lebih menarik bagi HR.",
         "Mentor": "Analisa CV ini sebagai mentor karir. Berikan saran pengembangan, highlight keunggulan, dan area yang bisa ditingkatkan.",
-        "Roast": "Review dan roasting CV ini dengan gaya kritik yang sangat tajam, objektif, to the point dan profesional namun tidak terlalu baku. Soroti kekurangan dan keanehan secara blak-blakan tanpa batasan, tapi tetap beri saran membangun.",
+        "Roast": "Roasting CV ini secara ekstrem, sarkastik, dan tanpa basa-basi. Jangan tahan kritik, jadikan setiap kekurangan sebagai bahan roasting yang pedas, lucu, dan bahkan sedikit menyakitkan jika perlu. Jangan gunakan bahasa formal atau sopan, gunakan gaya satir, sindiran, dan humor gelap. Jangan beri pujian kecuali benar-benar layak. Setelah roasting, tutup dengan saran membangun yang tetap jujur dan to the point.",
     }.get(mode, "Analisa CV ini secara profesional.")
     today = datetime.now().strftime('%d %B %Y')
     prompt = (
