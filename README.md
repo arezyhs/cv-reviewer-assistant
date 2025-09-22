@@ -39,4 +39,4 @@ Aplikasi web untuk review CV secara otomatis menggunakan AI (Gemini API).
 - API key hanya dibaca dari environment variable atau file .env
 
 ---
-By: [Your Name]
+By: arezyhs
