@@ -66,6 +66,7 @@ def build_prompt(cv_text: str, mode: str, additional: str = "") -> str:
         "Mentor": "Analisa CV ini sebagai mentor karir. Berikan saran pengembangan, highlight keunggulan, dan area yang bisa ditingkatkan.",
     }.get(mode, "Analisa CV ini secara profesional.")
     prompt = (
+        f"Tahun saat ini adalah 2025. Gunakan konteks ini saat menganalisis tanggal pada CV.\n"
         f"{mode_instruction}\n\n"
         f"Teks CV (hanya analisa isi CV, abaikan topik lain di luar CV):\n{cv_text}\n\n"
         f"Fokuskan seluruh analisis dan rekomendasi hanya pada isi CV di atas. Jangan bahas topik lain di luar CV.\n"
