@@ -1,7 +1,9 @@
 # CV Reviewer AI Assistant
 # Streamlit app entry point
 
+
 import streamlit as st
+st.set_option('server.maxUploadSize', 5)
 from utils import extract_text_from_pdf, review_cv_with_gemini
 
 st.set_page_config(page_title="CV Reviewer AI", layout="centered")

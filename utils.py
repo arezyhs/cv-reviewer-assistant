@@ -34,7 +34,8 @@ def build_prompt(cv_text: str, mode: str, additional: str = "") -> str:
     }.get(mode, "Analisa CV ini secara profesional.")
     prompt = (
         f"{mode_instruction}\n\n"
-        f"Teks CV:\n{cv_text}\n\n"
+        f"Teks CV (hanya analisa isi CV, abaikan topik lain di luar CV):\n{cv_text}\n\n"
+        f"Fokuskan seluruh analisis dan rekomendasi hanya pada isi CV di atas. Jangan bahas topik lain di luar CV.\n"
         f"Berikan analisis struktur, poin kekuatan, area perbaikan, dan rekomendasi tambahan. {additional}\n"
         f"Gunakan bahasa profesional dan terstruktur."
     )
