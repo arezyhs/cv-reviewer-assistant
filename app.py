@@ -13,7 +13,7 @@ Upload CV Anda (PDF), pilih mode review, dan dapatkan analisis profesional dari 
 """)
 
 uploaded_file = st.file_uploader("Upload CV (PDF)", type=["pdf"])
-mode = st.selectbox("Pilih Mode Review", ["ATS", "HR", "Mentor"])
+mode = st.selectbox("Pilih Mode Review", ["ATS", "HR", "Mentor", "Roast"])
 
 prompt_additional = st.text_area("Instruksi tambahan (opsional)")
 
