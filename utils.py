@@ -16,6 +16,21 @@ def extract_text_from_pdf(file) -> str:
         text = "\n".join(page.extract_text() or "" for page in pdf.pages)
     return text
 
+def is_cv_text(text: str) -> bool:
+    """Cek apakah teks mengandung kata kunci umum CV."""
+    keywords = [
+        "curriculum vitae", "cv", "resume", "biodata",
+        "pendidikan", "education", "pengalaman", "experience",
+        "skills", "keahlian", "pekerjaan", "work", "contact", "kontak",
+        "summary", "profil", "profile", "sertifikat", "certification"
+    ]
+    text_lower = text.lower()
+    found = 0
+    for kw in keywords:
+        if kw in text_lower:
+            found += 1
+    return found >= 2  # minimal 2 kata kunci ditemukan agar lebih yakin
+
 def review_cv_with_gemini(cv_text: str, mode: str, additional: str = "") -> str:
     """Send prompt to Gemini API and return review result."""
     if not GEMINI_API_KEY:
