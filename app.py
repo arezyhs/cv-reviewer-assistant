@@ -29,3 +29,8 @@ if st.button("Review CV") and uploaded_file:
             result = review_cv_with_gemini(cv_text, mode, prompt_additional)
             st.subheader("Hasil Review:")
             st.write(result)
+    
+    # Footer: dibuat oleh arezyhs dan tanggal sekarang
+    from datetime import datetime
+    st.markdown("---")
+    st.markdown(f"<div style='text-align:center; color:gray;'>Dibuat oleh <b>arezyhs</b> &middot; {datetime.now().strftime('%d %B %Y')}</div>", unsafe_allow_html=True)
