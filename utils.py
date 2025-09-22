@@ -31,6 +31,24 @@ def is_cv_text(text: str) -> bool:
             found += 1
     return found >= 2  # minimal 2 kata kunci ditemukan agar lebih yakin
 
+def is_cv_by_ai(text: str) -> bool:
+    """Validasi dengan Gemini API: apakah teks ini CV/resume?"""
+    if not GEMINI_API_KEY:
+        return False
+    genai.configure(api_key=GEMINI_API_KEY)
+    model = genai.GenerativeModel("gemini-2.5-flash")
+    prompt = (
+        "Apakah teks berikut adalah CV atau resume seseorang? "
+        "Jawab hanya dengan satu kata: YA atau TIDAK.\n\n"
+        f"Teks:\n{text[:3000]}"  # batasi panjang prompt
+    )
+    try:
+        response = model.generate_content(prompt)
+        answer = response.text.strip().lower()
+        return answer.startswith("ya")
+    except Exception:
+        return False
+
 def review_cv_with_gemini(cv_text: str, mode: str, additional: str = "") -> str:
     """Send prompt to Gemini API and return review result."""
     if not GEMINI_API_KEY:

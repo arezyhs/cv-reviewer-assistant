@@ -3,7 +3,7 @@
 
 
 import streamlit as st
-from utils import extract_text_from_pdf, review_cv_with_gemini, is_cv_text
+from utils import extract_text_from_pdf, review_cv_with_gemini, is_cv_text, is_cv_by_ai
 
 st.set_page_config(page_title="CV Reviewer AI", layout="centered")
 st.title("CV Reviewer AI Assistant")
@@ -20,8 +20,11 @@ prompt_additional = st.text_area("Instruksi tambahan (opsional)")
 if st.button("Review CV") and uploaded_file:
     with st.spinner("Memproses CV..."):
         cv_text = extract_text_from_pdf(uploaded_file)
+        # Validasi kata kunci dulu, lalu validasi AI
         if not is_cv_text(cv_text):
             st.error("File yang diupload tidak terdeteksi sebagai CV. Pastikan Anda mengupload dokumen CV yang benar.")
+        elif not is_cv_by_ai(cv_text):
+            st.error("Berdasarkan analisis AI, file ini bukan CV/resume. Pastikan Anda mengupload dokumen CV yang benar.")
         else:
             result = review_cv_with_gemini(cv_text, mode, prompt_additional)
             st.subheader("Hasil Review:")
