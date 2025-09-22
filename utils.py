@@ -1,6 +1,8 @@
 # utils.py
 # Utility functions for CV Reviewer AI
 
+from datetime import datetime
+
 from dotenv import load_dotenv
 load_dotenv()
 import pdfplumber
@@ -65,9 +67,10 @@ def build_prompt(cv_text: str, mode: str, additional: str = "") -> str:
         "HR": "Analisa CV ini dari sudut pandang HR. Soroti kekuatan, area perbaikan, dan rekomendasi agar lebih menarik bagi HR.",
         "Mentor": "Analisa CV ini sebagai mentor karir. Berikan saran pengembangan, highlight keunggulan, dan area yang bisa ditingkatkan.",
     }.get(mode, "Analisa CV ini secara profesional.")
+    today = datetime.now().strftime('%d %B %Y')
     prompt = (
-        f"Tahun saat ini adalah 2025. Gunakan konteks ini saat menganalisis tanggal pada CV.\n"
         f"{mode_instruction}\n\n"
+        f"Hari ini adalah {today}. Gunakan tanggal ini sebagai referensi saat menganalisis durasi dan status pengalaman pada CV.\n"
         f"Teks CV (hanya analisa isi CV, abaikan topik lain di luar CV):\n{cv_text}\n\n"
         f"Fokuskan seluruh analisis dan rekomendasi hanya pada isi CV di atas. Jangan bahas topik lain di luar CV.\n"
         f"Berikan analisis struktur, poin kekuatan, area perbaikan, dan rekomendasi tambahan. {additional}\n"
