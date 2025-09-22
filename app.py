@@ -12,6 +12,9 @@ st.write("""
 Upload CV Anda (PDF), pilih mode review, dan dapatkan analisis profesional dari AI.
 """)
 
+# Disclaimer privasi
+st.info("**Disclaimer:** Data CV yang Anda upload hanya digunakan untuk analisis sesaat dan tidak akan disimpan di server manapun.")
+
 uploaded_file = st.file_uploader("Upload CV (PDF)", type=["pdf"])
 mode = st.selectbox("Pilih Mode Review", ["ATS", "HR", "Mentor", "Roast"])
 
